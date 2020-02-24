@@ -1,0 +1,14 @@
+{
+  "name": "theframework-tester",
+  "version": "0.1.0",
+  "description": "The Framework Tester",
+  "main": "test-runner.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "the-framework": "1.0.14"
+  },
+  "author": "Daryl Rowland",
+  "license": "ISC"
+}
