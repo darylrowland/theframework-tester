@@ -7,19 +7,31 @@ const server = theFramework.startServer({
 });
 
 async function run () {
-    const test1 = await testRunner.runTest(
+    await testRunner.runTest(
         server, 
         "Test Hello Works",
         "GET", 
-        {},
         "/hello?name=Daryl", 
+        {},
         200, 
         {
             message: "Hello Daryl"
         }
     );
 
-    testRunner.failTest(test1, "Did not work");
+    await testRunner.runTest(
+        server, 
+        "Test Goodbye Works",
+        "POST", 
+        "/goodbye?name=Daryl", 
+        {
+            name: "Daryl"
+        },
+        200, 
+        {
+            message: "Goodbye Daryl"
+        }
+    );
 
     testRunner.summarise();
 

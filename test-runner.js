@@ -160,7 +160,8 @@ module.exports = {
 
             server.runRequest({
                 method: method,
-                url: url
+                url: url,
+                body: body
             }, {
                 writeHead: (content) => {
                     status = content;

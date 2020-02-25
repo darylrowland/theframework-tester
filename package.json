@@ -7,8 +7,8 @@
     "test": "node test/test.js"
   },
   "devDependencies": {
-    "the-framework": "*",
-    "uuid": "*"
+    "the-framework": "^1.0.15",
+    "uuid": "^7.0.0"
   },
   "author": "Daryl Rowland",
   "license": "ISC"
