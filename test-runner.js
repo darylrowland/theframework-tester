@@ -51,10 +51,6 @@ module.exports = {
         return testFiles;
     },
 
-    runTests() {
-        
-    },
-
     isObject(potentialObj) {
         if (Object.prototype.toString.call(potentialObj) == "[object Object]") {
             return true;
@@ -157,7 +153,7 @@ module.exports = {
         this.runCount ++;
     },
 
-    async runTest(server, description, method, url, expectedStatus, expectedResponse) {
+    async runTest(server, description, method, url, body, expectedStatus, expectedResponse) {
         return new Promise((resolve, reject) => {
             var response = null;
             var status = null;
