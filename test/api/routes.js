@@ -6,5 +6,5 @@ theFramework.get("/hello", [
     description: "Says hello",
     authRequired: false
 }, async (params, user) => {
-    return {message: `Hello ${params.name || ""}`}
+    return {message: `Hello ${params.name || ""}`, data: {age: 36}}
 });

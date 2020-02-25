@@ -4,10 +4,11 @@
   "description": "The Framework Tester",
   "main": "test-runner.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/test.js"
   },
   "devDependencies": {
-    "the-framework": "1.0.14"
+    "the-framework": "*",
+    "uuid": "*"
   },
   "author": "Daryl Rowland",
   "license": "ISC"
