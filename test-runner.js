@@ -171,11 +171,14 @@ module.exports = {
                     response = content;
                 },
                 end: async () => {
-                    const testResult = await this.checkTestResult(description, method, url, {
+                    var testResult = await this.checkTestResult(description, method, url, {
                         status: status,
                         response: JSON.parse(response)
                     }, expectedStatus, expectedResponse);
                     
+                    // Add in the actual response
+                    testResult.response = JSON.parse(response);
+
                     this.testResults.push(testResult);
 
                     resolve(testResult);

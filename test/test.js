@@ -49,7 +49,7 @@ async function run () {
         }
     );
 
-    await testRunner.runTest(
+    const result = await testRunner.runTest(
         server, 
         "Test Me Works",
         "GET", 
