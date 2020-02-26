@@ -153,7 +153,7 @@ module.exports = {
         this.runCount ++;
     },
 
-    async runTest(server, description, method, url, body, expectedStatus, expectedResponse) {
+    async runTest(server, description, method, url, headers, body, expectedStatus, expectedResponse) {
         return new Promise((resolve, reject) => {
             var response = null;
             var status = null;
@@ -161,7 +161,8 @@ module.exports = {
             server.runRequest({
                 method: method,
                 url: url,
-                body: body
+                body: body,
+                headers: headers
             }, {
                 writeHead: (content) => {
                     status = content;
