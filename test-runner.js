@@ -123,7 +123,7 @@ module.exports = {
             testResult.pass = false;
             testResult.outcomes.push({
                 type: TYPE_STATUS,
-                actual: actual.status,
+                actual: `${actual.status}${actual.response.error ? " - " + actual.response.error: ""}`,
                 expected: expectedStatus
             });
         }

@@ -65,12 +65,6 @@ async function run () {
     );
 
     testRunner.summarise();
-
-
 }
 
 run();
-
-
-
-//testRunner.run();
