@@ -1,6 +1,6 @@
 {
   "name": "theframework-tester",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "The Framework Tester",
   "main": "test-runner.js",
   "scripts": {

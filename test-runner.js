@@ -211,8 +211,7 @@ module.exports = {
                         console.log(`     |  ${outcome.field || outcome.type}`);
                         console.log(`     |     Actual   = ${outcome.actual}`);
                         console.log(`     |     Expected = ${outcome.expected}`);
-                        console.log(`     |     Response = ${JSON.stringify(outcome)}`);   
-
+                        
                         if (outcome.response) {
                             console.log(`     |     Response = ${JSON.stringify(outcome.response)}`);   
                         }
