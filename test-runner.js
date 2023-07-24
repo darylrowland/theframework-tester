@@ -124,7 +124,8 @@ module.exports = {
             testResult.outcomes.push({
                 type: TYPE_STATUS,
                 actual: `${actual.status}${actual.response.error ? " - " + actual.response.error: ""}`,
-                expected: expectedStatus
+                expected: expectedStatus,
+                response: actual.response
             });
         }
 
@@ -211,6 +212,10 @@ module.exports = {
                         console.log(`     |     Actual   = ${outcome.actual}`);
                         console.log(`     |     Expected = ${outcome.expected}`);
                         console.log(`     |     Response = ${JSON.stringify(outcome)}`);   
+
+                        if (outcome.response) {
+                            console.log(`     |     Response = ${JSON.stringify(outcome.response)}`);   
+                        }
                     }
                 });
 
