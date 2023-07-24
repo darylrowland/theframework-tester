@@ -1,13 +1,13 @@
 {
   "name": "theframework-tester",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "The Framework Tester",
   "main": "test-runner.js",
   "scripts": {
     "test": "node test/test.js"
   },
   "devDependencies": {
-    "the-framework": "^1.0.16",
+    "the-framework": "^1.1.5",
     "uuid": "^7.0.0"
   },
   "author": "Daryl Rowland",
