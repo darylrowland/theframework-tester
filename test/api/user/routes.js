@@ -37,13 +37,13 @@ theFramework.get("/me", [
         {
             success: true, 
             description: "Get user me data",
-            // headers: {
-            //     "x-user-token": "${user_login.token}"
-            // },
+            headers: {
+                "x-user-token": "${user_login.token}"
+            },
             dependsOn: ["user_login"],
-            expectedResult: {}
+            expectedResult: {message: "Hello"}
         }
     ]
 }, async (params, user) => {
-    return {message: "hello"};
+    return {message: "Hello"};
 });
