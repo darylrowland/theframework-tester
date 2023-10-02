@@ -1,7 +1,52 @@
 [
   {
     "test": {
-      "id": "0d9610b4-922a-46c8-99ee-63bb3fc10f6f",
+      "id": "e18b9379-4da0-4572-8aa4-4ad99f3b680c",
+      "test": {
+        "success": true,
+        "description": "Check we can copy a value",
+        "params": {
+          "name": "Mr Copy"
+        },
+        "storeResult": "copy"
+      },
+      "api": {
+        "url": "/copy",
+        "description": "Copy paste route (copy)",
+        "method": "POST",
+        "parameters": [
+          {
+            "id": "name",
+            "type": "string",
+            "required": true,
+            "description": "Your name"
+          }
+        ],
+        "auth_required": false,
+        "options": {
+          "description": "Copy paste route (copy)",
+          "authRequired": false,
+          "tests": [
+            {
+              "success": true,
+              "description": "Check we can copy a value",
+              "params": {
+                "name": "Mr Copy"
+              },
+              "storeResult": "copy"
+            }
+          ]
+        }
+      }
+    },
+    "result": {
+      "message": "Copied"
+    },
+    "pass": true
+  },
+  {
+    "test": {
+      "id": "279ff221-236d-4d9e-a5a6-b071e515077a",
       "test": {
         "success": true,
         "description": "Check we can say hello to a user",
@@ -78,7 +123,7 @@
   },
   {
     "test": {
-      "id": "d4441426-80e6-4889-9bf4-9d66ed01fd0b",
+      "id": "1d20534c-f065-4154-9d19-3607b0352906",
       "test": {
         "success": true,
         "dependsOn": [
@@ -158,7 +203,7 @@
   },
   {
     "test": {
-      "id": "bd4370ad-4340-47f4-a28b-d2b47e4e43e4",
+      "id": "612a2348-8a08-4e97-b21c-77288ff4ba0d",
       "test": {
         "success": true,
         "description": "Logs a user in",
@@ -216,7 +261,7 @@
   },
   {
     "test": {
-      "id": "e742e15a-7d12-4f43-a2e7-d6b21edab085",
+      "id": "ef90e7e8-f155-4474-91ea-9b9f79995397",
       "test": {
         "success": true,
         "description": "Get user me data",
@@ -266,6 +311,70 @@
         "key": "message",
         "expectedResult": "Hello",
         "actualResult": "Hello",
+        "reason": null
+      }
+    ],
+    "pass": true
+  },
+  {
+    "test": {
+      "id": "422f6f1d-3d7b-4a0c-8a2d-c73398c10301",
+      "test": {
+        "success": true,
+        "dependsOn": [
+          "copy"
+        ],
+        "params": {
+          "pasted": "Mr Copy"
+        },
+        "description": "Check we can paste a value in a test",
+        "expectedResult": {
+          "message": "Hey Mr Copy"
+        }
+      },
+      "api": {
+        "url": "/paste",
+        "description": "Says goodbye",
+        "method": "POST",
+        "parameters": [
+          {
+            "id": "pasted",
+            "type": "string",
+            "required": true,
+            "description": "Pasted Value"
+          }
+        ],
+        "auth_required": false,
+        "options": {
+          "description": "Says goodbye",
+          "authRequired": false,
+          "tests": [
+            {
+              "success": true,
+              "dependsOn": [
+                "copy"
+              ],
+              "params": {
+                "pasted": "Mr Copy"
+              },
+              "description": "Check we can paste a value in a test",
+              "expectedResult": {
+                "message": "Hey Mr Copy"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "result": {
+      "message": "Hey Mr Copy"
+    },
+    "comparison": [
+      {
+        "pass": true,
+        "key": "message",
+        "expectedResult": "Hey Mr Copy",
+        "actualResult": "Hey Mr Copy",
         "reason": null
       }
     ],

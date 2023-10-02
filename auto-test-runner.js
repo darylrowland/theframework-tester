@@ -2,8 +2,13 @@ const { v4: uuidv4 } = require('uuid');
 const fs = require("fs");
 const constants = require('./constants');
 const comparators = require('./comparators');
+const copyPaste = require("copy-paste");
+
+const COPY_PASTE_KEY = "${COPY_PASTE}";
 
 module.exports = {
+
+    COPY_PASTE_KEY: COPY_PASTE_KEY,
 
     async runOnServer(server, method, url, body, headers) {
         return new Promise((resolve, reject) => {
@@ -76,7 +81,21 @@ module.exports = {
         return null;
     },
 
-    getValueFromParamsOrResultData(fieldValue, params, resultData) {
+    async pasteFromClipboard() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            copyPaste.paste((e, code) => {
+              resolve(code);
+            });
+          }, 200);
+        });
+    },
+
+    async getValueFromParamsOrResultData(fieldValue, params, resultData) {
+        if (fieldValue === COPY_PASTE_KEY) {
+            return await this.pasteFromClipboard();
+        }
+
         if (fieldValue && fieldValue.indexOf("${") < 0) {
             return fieldValue;
         }
@@ -230,16 +249,16 @@ module.exports = {
         
         if (test.test.headers) {
             // We need to look through all the params and replace any ${} with 
-            Object.keys(test.test.headers).forEach((key) => {
-                headers[key] = this.getValueFromParamsOrResultData(test.test.headers[key], {}, resultData);
-            });
+            for (const key of Object.keys(test.test.headers)) {
+                headers[key] = await this.getValueFromParamsOrResultData(test.test.headers[key], {}, resultData);
+            }
         }
 
         if (test.api.method === "GET") {
             if (test.test.params) {
-                Object.keys(test.test.params).forEach((key) => {
-                    
-                    const value = this.getValueFromParamsOrResultData(test.test.params[key], test.test.params, resultData);
+
+                for (const key of Object.keys(test.test.params)) {
+                    const value = await this.getValueFromParamsOrResultData(test.test.params[key], test.test.params, resultData);
                 
                     if (value) {
                         if (queryStr.length > 1) {
@@ -248,7 +267,7 @@ module.exports = {
 
                         queryStr += `${key}=${value}`;
                     }
-                });
+                }
             }
 
         } else {
@@ -256,11 +275,10 @@ module.exports = {
 
             if (body) {
                 // We need to look through all the params and replace any ${} with 
-                Object.keys(body).forEach((key) => {
-                    body[key] = this.getValueFromParamsOrResultData(body[key], test.test.params, resultData);
-                });
+                for (const key of Object.keys(body)) {
+                    body[key] = await this.getValueFromParamsOrResultData(body[key], test.test.params, resultData);
+                }
             }
-
         }
 
         try {

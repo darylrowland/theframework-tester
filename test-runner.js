@@ -7,11 +7,14 @@ const TYPE_FIELD = "field";
 const TYPE_MANUAL_FAIL = "manual_fail";
 
 const {IS_UUID, IS_PRESENT} = require("./comparators");
+const {COPY_PASTE_KEY}  = require("./auto-test-runner");
 
 module.exports = {
 
     IS_UUID: IS_UUID,
     IS_PRESENT: IS_PRESENT,
+
+    COPY_PASTE_KEY: COPY_PASTE_KEY,
 
     testResults: [],
     runCount: 0,

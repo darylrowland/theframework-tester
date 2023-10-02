@@ -7,9 +7,12 @@
     "test": "node test/test.js"
   },
   "devDependencies": {
-    "the-framework": "^1.1.5",
-    "uuid": "^6.0.3"
+    "the-framework": "^1.1.5"
   },
   "author": "Daryl Rowland",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "copy-paste": "^1.5.3",
+    "uuid": "^9.0.1"
+  }
 }
