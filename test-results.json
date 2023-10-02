@@ -1,0 +1,159 @@
+[
+  {
+    "test": {
+      "id": "430f9410-3577-4af6-9f7e-40e8e599f848",
+      "test": {
+        "success": true,
+        "description": "Check we can say hello to a user",
+        "params": {
+          "name": "John"
+        },
+        "expectedResult": {
+          "message": "Hello John",
+          "data": {
+            "age": 36
+          }
+        },
+        "storeResult": "hello"
+      },
+      "api": {
+        "url": "/hello",
+        "description": "Says hello",
+        "method": "GET",
+        "parameters": [
+          {
+            "id": "name",
+            "type": "string",
+            "required": true,
+            "description": "Your name"
+          }
+        ],
+        "auth_required": false,
+        "options": {
+          "description": "Says hello",
+          "authRequired": false,
+          "tests": [
+            {
+              "success": true,
+              "description": "Check we can say hello to a user",
+              "params": {
+                "name": "John"
+              },
+              "expectedResult": {
+                "message": "Hello John",
+                "data": {
+                  "age": 36
+                }
+              },
+              "storeResult": "hello"
+            }
+          ]
+        }
+      }
+    },
+    "result": {
+      "message": "Hello John",
+      "data": {
+        "age": 36,
+        "name": "John"
+      }
+    },
+    "comparison": [
+      {
+        "pass": true,
+        "key": "message",
+        "expectedResult": "Hello John",
+        "actualResult": "Hello John",
+        "reason": null
+      },
+      {
+        "pass": true,
+        "key": ".data.age",
+        "expectedResult": 36,
+        "actualResult": 36,
+        "reason": null
+      }
+    ],
+    "pass": true
+  },
+  {
+    "test": {
+      "id": "ae4f004d-e684-46bc-93e7-c31ce4297780",
+      "test": {
+        "success": true,
+        "dependsOn": [
+          "hello"
+        ],
+        "description": "Check we can say goodbye to a user",
+        "params": {
+          "name": "John"
+        },
+        "expectedResult": {
+          "message": "Goodbye John",
+          "data": {
+            "age": 36
+          }
+        }
+      },
+      "api": {
+        "url": "/goodbye",
+        "description": "Says goodbye",
+        "method": "POST",
+        "parameters": [
+          {
+            "id": "name",
+            "type": "string",
+            "required": true,
+            "description": "Your name"
+          }
+        ],
+        "auth_required": false,
+        "options": {
+          "description": "Says goodbye",
+          "authRequired": false,
+          "tests": [
+            {
+              "success": true,
+              "dependsOn": [
+                "hello"
+              ],
+              "description": "Check we can say goodbye to a user",
+              "params": {
+                "name": "John"
+              },
+              "expectedResult": {
+                "message": "Goodbye John",
+                "data": {
+                  "age": 36
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "result": {
+      "message": "Goodbye John",
+      "data": {
+        "age": 36
+      }
+    },
+    "comparison": [
+      {
+        "pass": true,
+        "key": "message",
+        "expectedResult": "Goodbye John",
+        "actualResult": "Goodbye John",
+        "reason": null
+      },
+      {
+        "pass": true,
+        "key": ".data.age",
+        "expectedResult": 36,
+        "actualResult": 36,
+        "reason": null
+      }
+    ],
+    "pass": true
+  }
+]

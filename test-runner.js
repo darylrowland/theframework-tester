@@ -1,5 +1,6 @@
 const fs = require("fs");
 const uuid = require("uuid").v4;
+const autoTestRunner = require("./auto-test-runner");
 
 const TYPE_STATUS = "status";
 const TYPE_FIELD = "field";
@@ -237,6 +238,10 @@ module.exports = {
 
     async run() {
         await this.findTests();
+    },
+
+    async autoTest(server, apiDirectory) {
+        await autoTestRunner.run(server, apiDirectory);
     }
 
 

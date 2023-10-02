@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "the-framework": "^1.1.5",
-    "uuid": "^7.0.0"
+    "uuid": "^6.0.3"
   },
   "author": "Daryl Rowland",
   "license": "ISC"

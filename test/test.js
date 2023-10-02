@@ -1,5 +1,6 @@
 const theFramework = require("the-framework");
 const testRunner = require("../test-runner");
+const path = require('path');
 
 const TEST_TOKEN = "123456";
 
@@ -67,4 +68,11 @@ async function run () {
     testRunner.summarise();
 }
 
-run();
+
+async function runAutoTest() {
+    const apiPath = path.join(__dirname, "api");
+    await testRunner.autoTest(server,  apiPath);
+}
+
+//run();
+runAutoTest();
