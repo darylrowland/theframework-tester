@@ -1,7 +1,7 @@
 [
   {
     "test": {
-      "id": "3dc3c25f-08df-4a8f-8769-f5432c20775c",
+      "id": "0d9610b4-922a-46c8-99ee-63bb3fc10f6f",
       "test": {
         "success": true,
         "description": "Check we can say hello to a user",
@@ -78,7 +78,7 @@
   },
   {
     "test": {
-      "id": "04a047e0-a3f2-4f84-b1c0-d0e58697fad8",
+      "id": "d4441426-80e6-4889-9bf4-9d66ed01fd0b",
       "test": {
         "success": true,
         "dependsOn": [
@@ -158,7 +158,7 @@
   },
   {
     "test": {
-      "id": "4db648e5-68ef-41ff-9cbe-53f9fb981388",
+      "id": "bd4370ad-4340-47f4-a28b-d2b47e4e43e4",
       "test": {
         "success": true,
         "description": "Logs a user in",
@@ -216,7 +216,7 @@
   },
   {
     "test": {
-      "id": "2763b9c6-d9dc-4bc5-868c-eaaf91b882ea",
+      "id": "e742e15a-7d12-4f43-a2e7-d6b21edab085",
       "test": {
         "success": true,
         "description": "Get user me data",

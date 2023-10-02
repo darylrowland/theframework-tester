@@ -6,7 +6,12 @@ const TYPE_STATUS = "status";
 const TYPE_FIELD = "field";
 const TYPE_MANUAL_FAIL = "manual_fail";
 
+const {IS_UUID, IS_PRESENT} = require("./comparators");
+
 module.exports = {
+
+    IS_UUID: IS_UUID,
+    IS_PRESENT: IS_PRESENT,
 
     testResults: [],
     runCount: 0,
