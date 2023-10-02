@@ -1,6 +1,8 @@
 const theFramework = require("the-framework");
 const comparators = require("../../../comparators");
 
+const {TOKEN} = require("../../example-data");
+
 theFramework.post("/login", [
 ], {
     description: "Logs a user in",
@@ -13,12 +15,13 @@ theFramework.post("/login", [
                 email: "test@test.com",
                 password: "badpassword"
             },
-            expectedResult: {token: comparators.IS_UUID}
+            expectedResult: {token: comparators.IS_UUID},
+            storeResult: "user_login"
         }
     ]
 }, async (params, user) => {
     return {
-        token: "abc123",
+        token: TOKEN,
         user: {
             id: 1,
             name: "John"
@@ -29,7 +32,18 @@ theFramework.post("/login", [
 theFramework.get("/me", [
 ], {
     description: "Returns details about you",
-    authRequired: true
+    authRequired: true,
+    tests: [
+        {
+            success: true, 
+            description: "Get user me data",
+            // headers: {
+            //     "x-user-token": "${user_login.token}"
+            // },
+            dependsOn: ["user_login"],
+            expectedResult: {}
+        }
+    ]
 }, async (params, user) => {
-    return user;
+    return {message: "hello"};
 });

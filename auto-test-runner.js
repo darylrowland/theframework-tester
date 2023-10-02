@@ -23,6 +23,9 @@ module.exports = {
                     response = content;
                 },
                 end: async () => {
+                    if (status !== 200) {
+                        reject(response);
+                    }
                     resolve(response);
                 }
             });
@@ -223,6 +226,15 @@ module.exports = {
         var body = null;
         var queryStr = "?";
 
+        var headers = {};
+        
+        if (test.test.headers) {
+            // We need to look through all the params and replace any ${} with 
+            Object.keys(test.test.headers).forEach((key) => {
+                headers[key] = this.getValueFromParamsOrResultData(test.test.headers[key], {}, resultData);
+            });
+        }
+
         if (test.api.method === "GET") {
             if (test.test.params) {
                 Object.keys(test.test.params).forEach((key) => {
@@ -251,15 +263,20 @@ module.exports = {
 
         }
 
-        const result = await this.runOnServer(server, test.api.method, `${url}${queryStr}`, body, test.test.headers);
+        try {
+            const result = await this.runOnServer(server, test.api.method, `${url}${queryStr}`, body, headers);
         
-        const {comparison, comparisonOutcome} = await this.compareOutcome(result, test.test.expectedResult);
-
-        return {
-            result: JSON.parse(result),
-            comparisonOutcome: comparisonOutcome,
-            comparison: comparison
+            const {comparison, comparisonOutcome} = await this.compareOutcome(result, test.test.expectedResult);
+    
+            return {
+                result: JSON.parse(result),
+                comparisonOutcome: comparisonOutcome,
+                comparison: comparison
+            }
+        } catch (e) {
+            throw Error(e);
         }
+        
     },
 
     formatActualOrExpectedResult(result) {
@@ -353,6 +370,8 @@ module.exports = {
                             console.log(`      - ${comparison.key} ${comparison.reason === constants.KEY_MISSING ? "is missing" : "does not match"} \n            Expected: ${this.formatActualOrExpectedResult(comparison.expectedResult)}\n            ${comparison.reason === constants.NOT_MATCHING ? `Actual: ${this.formatActualOrExpectedResult(comparison.actualResult)}` : ""}`);
                         }
                     });
+                } else if (!testResults[testResults.length - 1].pass) {
+                    console.log(`      - ${testResults[testResults.length - 1].result}`);
                 }
 
             }

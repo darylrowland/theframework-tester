@@ -1,7 +1,7 @@
 [
   {
     "test": {
-      "id": "85de555e-06f9-45fe-a7a5-bbb6f4212a53",
+      "id": "010ea588-1cc1-4354-8079-16d0d0e2c3bc",
       "test": {
         "success": true,
         "description": "Logs a user in",
@@ -11,7 +11,8 @@
         },
         "expectedResult": {
           "token": "$IS_UUID$"
-        }
+        },
+        "storeResult": "user_login"
       },
       "api": {
         "url": "/login",
@@ -32,14 +33,15 @@
               },
               "expectedResult": {
                 "token": "$IS_UUID$"
-              }
+              },
+              "storeResult": "user_login"
             }
           ]
         }
       }
     },
     "result": {
-      "token": "abc123",
+      "token": "0a452674-346f-427f-848f-e423096edc8e",
       "user": {
         "id": 1,
         "name": "John"
@@ -47,13 +49,48 @@
     },
     "comparison": [
       {
-        "pass": false,
+        "pass": true,
         "key": "token",
-        "actualResult": "abc123",
-        "expectedResult": "[is UUID]",
-        "reason": "NOT_MATCHING"
+        "actualResult": "0a452674-346f-427f-848f-e423096edc8e",
+        "expectedResult": "[is UUID]"
       }
     ],
+    "pass": true
+  },
+  {
+    "test": {
+      "id": "f153ab91-20e4-435d-b8ad-10b9a6574f58",
+      "test": {
+        "success": true,
+        "description": "Get user me data",
+        "dependsOn": [
+          "user_login"
+        ],
+        "expectedResult": {}
+      },
+      "api": {
+        "url": "/me",
+        "description": "Returns details about you",
+        "method": "GET",
+        "parameters": [],
+        "auth_required": true,
+        "options": {
+          "description": "Returns details about you",
+          "authRequired": true,
+          "tests": [
+            {
+              "success": true,
+              "description": "Get user me data",
+              "dependsOn": [
+                "user_login"
+              ],
+              "expectedResult": {}
+            }
+          ]
+        }
+      }
+    },
+    "result": {},
     "pass": false
   }
 ]
