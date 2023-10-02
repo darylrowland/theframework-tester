@@ -1,8 +1,7 @@
 const { v4: uuidv4 } = require('uuid');
 const fs = require("fs");
-
-const KEY_MISSING = "KEY_MISSING";
-const NOT_MATCHING = "NOT_MATCHING";
+const constants = require('./constants');
+const comparators = require('./comparators');
 
 module.exports = {
 
@@ -116,13 +115,13 @@ module.exports = {
                 key: this.formatPath(path, key),
                 actualResult: null,
                 expectedResult: expectedResult[key],
-                reason: KEY_MISSING
+                reason: constants.KEY_MISSING
             }];
         }
 
         // If expected result is a function we use that to return the comparison result
-        if (typeof expectedResult[key] === "function") {
-            return await expectedResult[key](path, key, result, expectedResult);
+        if (comparators.isCompareFunction(expectedResult[key])) {
+            return await comparators.compare(path, key, result, expectedResult);
         }
 
         // We have the key - first check the type matches that of expectedResult
@@ -133,7 +132,7 @@ module.exports = {
                 key: this.formatPath(path, key),
                 expectedResult: typeof expectedResult[key],
                 actualResult: typeof result[key],
-                reason: NOT_MATCHING
+                reason: constants.NOT_MATCHING
             }];
         }
 
@@ -163,7 +162,7 @@ module.exports = {
                     key: this.formatPath(path, key),
                     expectedResult: expectedResult[key],
                     actualResult: result[key],
-                    reason: NOT_MATCHING
+                    reason: constants.NOT_MATCHING
                 }];
             }
         }
@@ -264,6 +263,11 @@ module.exports = {
     },
 
     formatActualOrExpectedResult(result) {
+        if (comparators.isCompareFunction(result)) {
+            return comparators.FRIENDLY_NAMES[result];
+        }
+
+
         // If result is an object stringify it
         if (typeof result === "object") {
             return JSON.stringify(result);
@@ -346,7 +350,7 @@ module.exports = {
                 if (testResults[testResults.length - 1].comparison && testResults[testResults.length - 1].comparison.length > 0) {
                     testResults[testResults.length - 1].comparison.forEach((comparison) => {
                         if (!comparison.pass) {
-                            console.log(`      - ${comparison.key} ${comparison.reason === KEY_MISSING ? "is missing" : "does not match"} \n            Expected: ${this.formatActualOrExpectedResult(comparison.expectedResult)}\n            ${comparison.reason === NOT_MATCHING ? `Actual: ${this.formatActualOrExpectedResult(comparison.actualResult)}` : ""}`);
+                            console.log(`      - ${comparison.key} ${comparison.reason === constants.KEY_MISSING ? "is missing" : "does not match"} \n            Expected: ${this.formatActualOrExpectedResult(comparison.expectedResult)}\n            ${comparison.reason === constants.NOT_MATCHING ? `Actual: ${this.formatActualOrExpectedResult(comparison.actualResult)}` : ""}`);
                         }
                     });
                 }
