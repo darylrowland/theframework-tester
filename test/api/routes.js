@@ -18,6 +18,36 @@ theFramework.get("/hello", [
     return {message: `Hello ${params.name || ""}`, data: {age: 36, name: params.name}}
 });
 
+theFramework.get("/hello/array", [
+], {
+    description: "Says hello in an array",
+    authRequired: false,
+    tests: [
+        {
+            success: true, 
+            description: "Check array comparison",
+            expectedResult: ["h", "e", "l", "l", "o"],
+        }
+    ]
+}, async (params, user) => {
+    return ["h", "e", "l", "l", "o"]
+});
+
+theFramework.get("/hello/array/deep", [
+], {
+    description: "Says hello in an array",
+    authRequired: false,
+    tests: [
+        {
+            success: true, 
+            description: "Check array comparison",
+            expectedResult: [{hello: "world"}, {"how": "are you?"}],
+        }
+    ]
+}, async (params, user) => {
+    return [{hello: "world"}, {how: "are you?"}];
+});
+
 theFramework.post("/goodbye", [
     {id: "name", type: theFramework.STRING, required: true, description: "Your name"}
 ], {

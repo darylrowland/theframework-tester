@@ -1,7 +1,7 @@
 [
   {
     "test": {
-      "id": "e18b9379-4da0-4572-8aa4-4ad99f3b680c",
+      "id": "5630a629-c064-41c2-b4aa-544b4f7a604b",
       "test": {
         "success": true,
         "description": "Check we can copy a value",
@@ -46,7 +46,7 @@
   },
   {
     "test": {
-      "id": "279ff221-236d-4d9e-a5a6-b071e515077a",
+      "id": "de7327fd-978c-4f7d-8954-adfe1211d554",
       "test": {
         "success": true,
         "description": "Check we can say hello to a user",
@@ -123,7 +123,7 @@
   },
   {
     "test": {
-      "id": "1d20534c-f065-4154-9d19-3607b0352906",
+      "id": "e73a5a2a-925a-434b-b4d4-80cd80d29c97",
       "test": {
         "success": true,
         "dependsOn": [
@@ -203,7 +203,159 @@
   },
   {
     "test": {
-      "id": "612a2348-8a08-4e97-b21c-77288ff4ba0d",
+      "id": "67d53b30-f5ec-4712-8529-dda4c4fce443",
+      "test": {
+        "success": true,
+        "description": "Check array comparison",
+        "expectedResult": [
+          "h",
+          "e",
+          "l",
+          "l",
+          "o"
+        ]
+      },
+      "api": {
+        "url": "/hello/array",
+        "description": "Says hello in an array",
+        "method": "GET",
+        "parameters": [],
+        "auth_required": false,
+        "options": {
+          "description": "Says hello in an array",
+          "authRequired": false,
+          "tests": [
+            {
+              "success": true,
+              "description": "Check array comparison",
+              "expectedResult": [
+                "h",
+                "e",
+                "l",
+                "l",
+                "o"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "result": [
+      "h",
+      "e",
+      "l",
+      "l",
+      "o"
+    ],
+    "comparison": [
+      {
+        "pass": true,
+        "key": "0",
+        "expectedResult": "h",
+        "actualResult": "h",
+        "reason": null
+      },
+      {
+        "pass": true,
+        "key": "1",
+        "expectedResult": "e",
+        "actualResult": "e",
+        "reason": null
+      },
+      {
+        "pass": true,
+        "key": "2",
+        "expectedResult": "l",
+        "actualResult": "l",
+        "reason": null
+      },
+      {
+        "pass": true,
+        "key": "3",
+        "expectedResult": "l",
+        "actualResult": "l",
+        "reason": null
+      },
+      {
+        "pass": true,
+        "key": "4",
+        "expectedResult": "o",
+        "actualResult": "o",
+        "reason": null
+      }
+    ],
+    "pass": true
+  },
+  {
+    "test": {
+      "id": "e12ccd6e-56ee-4bdd-892a-eb21bfe6d5e3",
+      "test": {
+        "success": true,
+        "description": "Check array comparison",
+        "expectedResult": [
+          {
+            "hello": "world"
+          },
+          {
+            "how": "are you?"
+          }
+        ]
+      },
+      "api": {
+        "url": "/hello/array/deep",
+        "description": "Says hello in an array",
+        "method": "GET",
+        "parameters": [],
+        "auth_required": false,
+        "options": {
+          "description": "Says hello in an array",
+          "authRequired": false,
+          "tests": [
+            {
+              "success": true,
+              "description": "Check array comparison",
+              "expectedResult": [
+                {
+                  "hello": "world"
+                },
+                {
+                  "how": "are you?"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "result": [
+      {
+        "hello": "world"
+      },
+      {
+        "how": "are you?"
+      }
+    ],
+    "comparison": [
+      {
+        "pass": true,
+        "key": ".0.hello",
+        "expectedResult": "world",
+        "actualResult": "world",
+        "reason": null
+      },
+      {
+        "pass": true,
+        "key": ".1.how",
+        "expectedResult": "are you?",
+        "actualResult": "are you?",
+        "reason": null
+      }
+    ],
+    "pass": true
+  },
+  {
+    "test": {
+      "id": "f2190cf6-29a0-476e-95f0-9e2a67e4421c",
       "test": {
         "success": true,
         "description": "Logs a user in",
@@ -261,7 +413,7 @@
   },
   {
     "test": {
-      "id": "ef90e7e8-f155-4474-91ea-9b9f79995397",
+      "id": "0c5f6f9f-6873-4aba-8178-274d0b8287a0",
       "test": {
         "success": true,
         "description": "Get user me data",
@@ -318,7 +470,7 @@
   },
   {
     "test": {
-      "id": "422f6f1d-3d7b-4a0c-8a2d-c73398c10301",
+      "id": "a69508ba-b23b-43d8-ab57-3fdf2e346c0f",
       "test": {
         "success": true,
         "dependsOn": [
