@@ -1,7 +1,7 @@
 [
   {
     "test": {
-      "id": "8aaed1e3-f6ef-4d0d-a293-560627c0035d",
+      "id": "16e3cb56-3af9-4d02-9875-361c63a8e155",
       "test": {
         "success": true,
         "description": "Check we can copy a value",
@@ -46,7 +46,7 @@
   },
   {
     "test": {
-      "id": "16711e62-a1b0-40f0-9823-2e923a99f2b2",
+      "id": "fdaf1908-d346-49f4-b93e-2ea738c07f32",
       "test": {
         "success": true,
         "description": "Check we can say hello to a user",
@@ -123,7 +123,7 @@
   },
   {
     "test": {
-      "id": "6e7d01c4-623e-45cc-b9b3-9925120771fa",
+      "id": "53c7e594-3680-49d1-bf89-0198f8c41084",
       "test": {
         "success": true,
         "dependsOn": [
@@ -203,7 +203,7 @@
   },
   {
     "test": {
-      "id": "9f34ebe8-3119-4be7-a56a-f33f619fa8c4",
+      "id": "a091c6f0-79b4-4fba-a8bb-c4d97cf87f10",
       "test": {
         "success": true,
         "description": "Check we can say hello to a user",
@@ -276,7 +276,7 @@
   },
   {
     "test": {
-      "id": "23fe2bc3-4efc-46f9-813f-d435d82b3735",
+      "id": "eaf56764-c436-4e4a-9ab4-a49fb27c5132",
       "test": {
         "success": true,
         "description": "Check array comparison",
@@ -361,7 +361,7 @@
   },
   {
     "test": {
-      "id": "7e179c7f-60dc-4300-af96-8dccb6be9657",
+      "id": "a8bfbbbc-af48-4fd9-ba8a-d47c2c199685",
       "test": {
         "success": true,
         "description": "Check array comparison",
@@ -428,7 +428,7 @@
   },
   {
     "test": {
-      "id": "8778b43c-3b5b-494c-bdb8-ae02fba49b96",
+      "id": "509af569-dfc5-461a-b3d5-b5b180962786",
       "test": {
         "success": true,
         "description": "Logs a user in",
@@ -486,7 +486,7 @@
   },
   {
     "test": {
-      "id": "f84a0903-4f9d-4716-8104-0e95e10ca8d7",
+      "id": "25d1d876-f48d-478d-86f0-7fe1cf0832fa",
       "test": {
         "success": true,
         "description": "Get user me data",
@@ -543,7 +543,7 @@
   },
   {
     "test": {
-      "id": "10403554-9f57-46e0-9dac-21ca4ec7b901",
+      "id": "50e00f00-7b2e-4212-8a12-a8ddf7637cfe",
       "test": {
         "success": true,
         "dependsOn": [

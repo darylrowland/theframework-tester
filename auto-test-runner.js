@@ -232,14 +232,15 @@ module.exports = {
         // The url contains sections like :id and :name
         // We need to replace these with the actual values
         if (test.test.params) {
-            Object.keys(test.test.params).forEach((key) => {
+            for (const key of Object.keys(test.test.params)) {
                 if (url.indexOf(`${key}`) >= 0) {
+                    const value = await this.getValueFromParamsOrResultData(test.test.params[key], test.test.params, resultData);
                     url = url.replace(`:${key}`, test.test.params[key]);
                     
                     // We also need to remove this paramfrom the params
                     delete test.test.params[key];
                 }
-            });
+            }
         }
 
         var body = null;
