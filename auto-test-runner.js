@@ -235,7 +235,7 @@ module.exports = {
             for (const key of Object.keys(test.test.params)) {
                 if (url.indexOf(`${key}`) >= 0) {
                     const value = await this.getValueFromParamsOrResultData(test.test.params[key], test.test.params, resultData);
-                    url = url.replace(`:${key}`, test.test.params[key]);
+                    url = url.replace(`:${key}`, value);
                     
                     // We also need to remove this paramfrom the params
                     delete test.test.params[key];
