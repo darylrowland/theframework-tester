@@ -311,6 +311,20 @@ module.exports = {
         return result;
     },
 
+    async saveFile(fileName, content) {
+        return new Promise((resolve, reject) => {
+            fs.writeFile(fileName, content, err => {
+                if (err) {
+                    console.log("Could not save file");
+                    console.error(err);
+                    resolve();
+                } else {
+                    resolve();
+                }
+            });
+        });
+    },
+
     async run(server) {
         const apiDefinition = JSON.parse(await this.runOnServer(server, "GET", "/docs.json", {}, {}));
         var tests = this.getTestsToRun(apiDefinition);
@@ -399,25 +413,23 @@ module.exports = {
         const jsonString = JSON.stringify(testResults, null, 2);
 
         // Write formatted JSON string to file
-        fs.writeFile('test-results.json', jsonString, err => {
-          if (err) {
-            console.error(err);
-            return;
-          }
+        await this.saveFile('test-results.json', jsonString);
+
         
-          console.log("\n--------------------------");
-          console.log(`${passedCount === testResults.length ? "✅" : "❌"} ${passedCount} / ${testResults.length} tests passed`);
-          
-          if (tests.length > 0) {
+        
+        console.log("\n--------------------------");
+        console.log(`${passedCount === testResults.length ? "✅" : "❌"} ${passedCount} / ${testResults.length} tests passed`);
+        
+        if (tests.length > 0) {
             console.log(`❌ Could not run ${tests.length} tests as dependencies were not met`);
             tests.forEach((test) => {
                 console.log("   - " + test.test.description || "Unknown");
             });
-          }
-          
-          console.log('💾 Test results saved to test-results.json');
-          console.log("--------------------------\n");
-        });
+        }
+        
+        console.log('💾 Test results saved to test-results.json');
+        console.log("--------------------------\n");
+
 
 
     }

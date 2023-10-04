@@ -1,7 +1,7 @@
 [
   {
     "test": {
-      "id": "5630a629-c064-41c2-b4aa-544b4f7a604b",
+      "id": "2ba350b6-0903-45f3-9f0d-f2d9d316c1ca",
       "test": {
         "success": true,
         "description": "Check we can copy a value",
@@ -46,7 +46,7 @@
   },
   {
     "test": {
-      "id": "de7327fd-978c-4f7d-8954-adfe1211d554",
+      "id": "451aa08c-a842-4f25-b931-41580f3084e8",
       "test": {
         "success": true,
         "description": "Check we can say hello to a user",
@@ -123,7 +123,7 @@
   },
   {
     "test": {
-      "id": "e73a5a2a-925a-434b-b4d4-80cd80d29c97",
+      "id": "7defabb3-54ea-4fcd-a449-4a562541cfb6",
       "test": {
         "success": true,
         "dependsOn": [
@@ -203,7 +203,7 @@
   },
   {
     "test": {
-      "id": "67d53b30-f5ec-4712-8529-dda4c4fce443",
+      "id": "478f8f08-caf4-4ee7-bb42-ceef64d32daa",
       "test": {
         "success": true,
         "description": "Check array comparison",
@@ -288,7 +288,7 @@
   },
   {
     "test": {
-      "id": "e12ccd6e-56ee-4bdd-892a-eb21bfe6d5e3",
+      "id": "01799d0d-750f-4303-8553-d9d9c0e41286",
       "test": {
         "success": true,
         "description": "Check array comparison",
@@ -355,7 +355,7 @@
   },
   {
     "test": {
-      "id": "f2190cf6-29a0-476e-95f0-9e2a67e4421c",
+      "id": "fd620706-d1c9-4d9b-b688-cf7b6e761649",
       "test": {
         "success": true,
         "description": "Logs a user in",
@@ -413,7 +413,7 @@
   },
   {
     "test": {
-      "id": "0c5f6f9f-6873-4aba-8178-274d0b8287a0",
+      "id": "042302cc-bccb-486c-b914-1c3f545f3893",
       "test": {
         "success": true,
         "description": "Get user me data",
@@ -470,7 +470,7 @@
   },
   {
     "test": {
-      "id": "a69508ba-b23b-43d8-ab57-3fdf2e346c0f",
+      "id": "83023555-b668-4230-9480-e16a2b591620",
       "test": {
         "success": true,
         "dependsOn": [
