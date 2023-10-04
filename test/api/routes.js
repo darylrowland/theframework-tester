@@ -18,6 +18,24 @@ theFramework.get("/hello", [
     return {message: `Hello ${params.name || ""}`, data: {age: 36, name: params.name}}
 });
 
+theFramework.get("/hello/:paramName", [
+    {id: "paramName", type: theFramework.STRING, required: true, description: "Your name"}
+], {
+    description: "Says hello via URL params",
+    authRequired: false,
+    tests: [
+        {
+            success: true, 
+            description: "Check we can say hello to a user",
+            params: {paramName: "John"}, 
+            expectedResult: {message: "Hello John", data: {age: 36}},
+            storeResult: "hello"
+        }
+    ]
+}, async (params, user) => {
+    return {message: `Hello ${params.paramName || ""}`, data: {age: 36, name: params.paramName}}
+});
+
 theFramework.get("/hello/array", [
 ], {
     description: "Says hello in an array",

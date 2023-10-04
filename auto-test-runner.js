@@ -233,7 +233,7 @@ module.exports = {
         // We need to replace these with the actual values
         if (test.test.params) {
             Object.keys(test.test.params).forEach((key) => {
-                if (url.indexOf(`:${key}`) >= 0) {
+                if (url.indexOf(`${key}`) >= 0) {
                     url = url.replace(`:${key}`, test.test.params[key]);
                     
                     // We also need to remove this paramfrom the params
