@@ -92,11 +92,11 @@ module.exports = {
     },
 
     async getValueFromParamsOrResultData(fieldValue, params, resultData) {
-        if (fieldValue === COPY_PASTE_KEY) {
+        if (fieldValue && fieldValue === COPY_PASTE_KEY) {
             return await this.pasteFromClipboard();
         }
 
-        if (fieldValue && fieldValue.indexOf("${") < 0) {
+        if (fieldValue && fieldValue.indexOf && fieldValue.indexOf("${") < 0) {
             return fieldValue;
         }
 
@@ -104,7 +104,7 @@ module.exports = {
             return params[fieldValue];
         }
 
-        if (fieldValue.indexOf("${") === 0) {
+        if (fieldValue.indexOf && fieldValue.indexOf("${") === 0) {
             // If key starts with ${ we need to look for the value in resultData
             // Note result data can have data like this: {hello: {message: "Hello Daryl"}}
             // So we need to split the key by . and then look through the resultData
