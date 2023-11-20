@@ -390,6 +390,10 @@ module.exports = {
                         pass: !nextTest.test.success // If we were not expecting a success return, we can pass
                     });
 
+                    if (nextTest.test.storeResult) {
+                        resultData[nextTest.test.storeResult] = result;
+                    }
+
                     if (!nextTest.test.success) {
                         passedCount ++;
                     }
