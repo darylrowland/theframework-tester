@@ -391,7 +391,7 @@ module.exports = {
                     });
 
                     if (nextTest.test.storeResult) {
-                        resultData[nextTest.test.storeResult] = result;
+                        resultData[nextTest.test.storeResult] = e;
                     }
 
                     if (!nextTest.test.success) {
