@@ -122,7 +122,7 @@ module.exports = {
             return result;
         }
 
-        return null;
+        return fieldValue;
     },
 
     formatPath(path, key) {
