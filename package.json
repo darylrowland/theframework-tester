@@ -13,6 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "copy-paste": "^1.5.3",
-    "uuid": "^9.0.1"
+    "uuid": "^14.0.0"
   }
 }
